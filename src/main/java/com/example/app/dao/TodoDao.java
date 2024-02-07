@@ -20,6 +20,9 @@ public interface TodoDao {
 	
 	void update(Todo todo) throws Exception;
 	
+	//title表示
+	List<Todo> getTitleList() throws Exception;
+	
 	//pagenation
 	List<Todo> selectLimited(@Param("offset")int offset, @Param("num")int num) throws Exception;
 	

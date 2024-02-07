@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.app.dao.TodoDao">
+
+	<resultMap type="com.example.app.domain.Todo" id="todo">
+		<id property="id" column="id"/>
+		<result property="title" column="title"/>
+		<result property="note" column="note"/>
+		<result property="limit" column="limit"/>
+		<result property="important" column="important"/>
+	</resultMap>
+
+	<select resultMap="todo" id="selectAll">
+		SELECT
+			list.id, list.title, list.note,
+			list.limit, list.important
+		FROM list
+		ORDER BY list.important DESC
+	</select>
+	
+	<select resultMap="todo" id="selectById" parameterType="int">
+		SELECT
+			list.id, list.title, list.note,
+			list.limit, list.important
+		FROM list
+		WHERE list.id = #{id}
+	</select>
+	
+	<select resultMap="todo" id="getTitleList">
+		SELECT
+			list.id, list.title, list.limit
+		FROM list
+	</select>
+	
+	<insert id="insert" parameterType="com.example.app.domain.Todo" useGeneratedKeys="true">
+		INSERT INTO list(title, note, `limit`, important)
+		VALUES (#{title}, #{note}, #{limit}, #{important})
+	</insert>
+
+</mapper>

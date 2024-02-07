@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th= "http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+<link th:href="@{/css/style.css}" rel="stylesheet">
+<title>Todoリスト</title>
+</head>
+<body>
+<div class="container">
+	<header>
+	
+	</header>
+	<h1 class="my-4 h2">Todo管理システム</h1>
+	
+      <h2 class="h4">新規作成</h2>
+	
+	<div class="row">
+    <div class="col-md-12">
+
+      <form class="form" action="" method="post" th:object="${todo}">
+        <div class="form-group">
+            <label >タイトル<br>
+            <input type="text" th:field="*{title}"></label>
+            <small class="error-message" th:errors="*{title}"></small>
+        </div>
+        <div class="form-group">
+            <label >内容<br>
+            <textarea th:field="*{note}" rows="3" cols="30"></textarea></label>
+            <small class="error-message" th:errors="*{note}"></small>
+        </div>
+        <div class="form-group">
+            <label>期日<br>
+            <input type="date" th:field="*{limit}"></label>
+            <small></small>
+        </div>
+        <p class="mt-2">重要度<br>
+            <select th:field="*{important}">
+            	<option th:each="i : ${#numbers.sequence(1,10)}" th:value="${i}" th:text="${i}"></option>
+            </select>
+        </p>
+        <input class="btn btn-primary" type="submit" value="変更する">
+        
+        <a th:href="@{/}" class="btn btn-danger">削除する</a>
+        <a th:href="@{/listTodo}" class="btn btn-light">戻る</a>
+      </form>
+		
+   
+		<!--
+      <div th:replace="~{widget/pagination :: pagination(${totalPages}, ${currentPage}, 'rental')}"></div>
+      -->
+    </div><!-- /.col- -->
+  </div><!-- /.row -->
+	
+	
+	<footer>
+	
+	</footer>
+	
+</div>	<!-- /.container -->
+<script th:src="@{js/jquery-3.5.1.min.js}"></script>
+<script th:src="@{js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

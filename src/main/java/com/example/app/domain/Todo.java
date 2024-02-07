@@ -1,6 +1,6 @@
 package com.example.app.domain;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -16,6 +16,6 @@ public class Todo {
 	
 	@Size(max = 300)
 	private String note;
-	private Date limit;
+	private LocalDate limit;
 	private Integer important;
 }

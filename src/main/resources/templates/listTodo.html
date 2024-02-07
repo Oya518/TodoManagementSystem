@@ -12,11 +12,17 @@
 	<header>
 	
 	</header>
-	
+	<h1 class="my-4 h2">Todo管理システム</h1>
 	
 	<div class="row mt-4">
     <div class="col-md-12">
       <h2 class="h4">Todoリスト</h2>
+      <div class="alert alert-success" th:if="${message}">
+      	[[${message}]]
+      </div>
+      <p>
+      	<a th:href="@{/addTodo}" class="btn btn-primary btn-sm">Todo追加</a>
+      </p>
       <table class="table table-bordered">
         <tr>
           <th>ID</th>
@@ -24,19 +30,18 @@
           <th>期限</th>
           <th>編集</th>
         </tr>
-        <tr th:each=" : ${}">
-          <td>[[${}]]</td>
-          <td>[[${}]]</td>
-          <td>[[${}]]</td>
-          <td>[[${}]]</td>
-          <td><a th:href="@{//{id}(id=${.id})}" class="btn btn-danger btn-sm">返却</a></td>
+        <tr th:each="todo : ${titleList}">
+        	<td>[[${todo.id}]]</td>
+        	<td><a th:href="@{/show/{id}(id=${todo.id})}">[[${todo.title}]]</a></td>
+        	<td>[[${#temporals.format(todo.limit,'yyyy年M月dd日')}]]</td>
+        	<td><a th:href="@{/editTodo/{id}(id=${todo.id})}" class="btn btn-success btn-sm">編集</a></td>
         </tr>
-        
       </table>
 
    
-
+		<!--
       <div th:replace="~{widget/pagination :: pagination(${totalPages}, ${currentPage}, 'rental')}"></div>
+      -->
     </div><!-- /.col- -->
   </div><!-- /.row -->
 	
