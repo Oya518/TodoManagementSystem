@@ -17,4 +17,15 @@ public interface TodoService {
 	
 	//新規作成
 	void addTodo(Todo todo) throws Exception;
+	
+	//編集
+	void editTodo(Todo todo) throws Exception;
+	
+	//削除
+	void deleteTodo(Integer id) throws Exception;
+	
+	//ページネーション
+	int getTotalPages(int numPerPage) throws Exception;
+	
+	List<Todo> getTodoListPerPage(int page, int numPerPage) throws Exception;
 }

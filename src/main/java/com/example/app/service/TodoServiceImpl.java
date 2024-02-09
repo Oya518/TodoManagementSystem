@@ -36,6 +36,29 @@ public class TodoServiceImpl implements TodoService {
 		todoDao.insert(todo);
 	}
 
+	@Override
+	public void editTodo(Todo todo) throws Exception {
+		todoDao.update(todo);
+	}
+
+	@Override
+	public void deleteTodo(Integer id) throws Exception {
+		todoDao.setDeleteById(id);
+	}
+
+	@Override
+	public int getTotalPages(int numPerPage) throws Exception {
+		double count = (double)todoDao.countAll();
+		return (int)Math.ceil(count/numPerPage);
+	}
+
+	@Override
+	public List<Todo> getTodoListPerPage(int page, int numPerPage) throws Exception {
+		int offset = numPerPage * (page - 1);
+		return todoDao.selectLimited(offset, numPerPage);
+	}
+
+
 	
 	
 	

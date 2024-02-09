@@ -30,11 +30,36 @@
 		SELECT
 			list.id, list.title, list.limit
 		FROM list
+		ORDER BY list.important DESC
 	</select>
 	
 	<insert id="insert" parameterType="com.example.app.domain.Todo" useGeneratedKeys="true">
 		INSERT INTO list(title, note, `limit`, important)
 		VALUES (#{title}, #{note}, #{limit}, #{important})
 	</insert>
+	
+	<update id="update" parameterType="com.example.app.domain.Todo">
+		UPDATE list
+		SET title = #{title}, note = #{note}, `limit`= #{limit}, important = #{important}
+		WHERE id = #{id}
+	</update>
+	
+	<delete id="setDeleteById" parameterType="int">
+		DELETE FROM list
+		WHERE id = #{id}
+	</delete>
+	
+	<select id="countAll" resultType="long">
+		SELECT COUNT(*) FROM list
+	</select>
+	
+	<select id="selectLimited" resultMap="todo">
+		SELECT
+			list.id, list.title, list.note,
+			list.limit, list.important
+		FROM list
+		ORDER BY list.important DESC
+		LIMIT #{offset}, #{num}
+	</select>
 
 </mapper>

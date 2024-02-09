@@ -42,7 +42,7 @@
         </p>
         <input class="btn btn-primary" type="submit" value="変更する">
         
-        <a th:href="@{/}" class="btn btn-danger">削除する</a>
+        <a th:href="@{/deleteTodo/{id}(id=${todo.id})}" onclick="return confirmDelete()" class="btn btn-danger">削除する</a>
         <a th:href="@{/listTodo}" class="btn btn-light">戻る</a>
       </form>
 		
@@ -53,7 +53,12 @@
     </div><!-- /.col- -->
   </div><!-- /.row -->
 	
-	
+	<script>
+        function confirmDelete() {
+            var result = confirm("本当に削除しますか？");
+            return result;
+        }
+    </script>
 	<footer>
 	
 	</footer>

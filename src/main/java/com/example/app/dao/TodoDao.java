@@ -14,7 +14,7 @@ public interface TodoDao {
 	
 	Todo selectById(Integer id) throws Exception;
 	
-	void setDeleteById() throws Exception;
+	void setDeleteById(Integer id) throws Exception;
 	
 	void insert(Todo todo) throws Exception;
 	
@@ -23,10 +23,10 @@ public interface TodoDao {
 	//title表示
 	List<Todo> getTitleList() throws Exception;
 	
-	//pagenation
+	//pagination
 	List<Todo> selectLimited(@Param("offset")int offset, @Param("num")int num) throws Exception;
 	
-	long countActive() throws Exception;
+	long countAll() throws Exception;
 	
 	
 }
