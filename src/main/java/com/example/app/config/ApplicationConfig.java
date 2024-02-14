@@ -24,5 +24,7 @@ public class ApplicationConfig implements WebMvcConfigurer {
 			messageSource.setBasename("validation");
 			return messageSource;
 		}
+		
+		
 	
 }

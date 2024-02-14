@@ -40,7 +40,10 @@
 		
    
       <div th:replace="~{pagination/pagination :: pagination(${totalPages}, ${currentPage}, 'listTodo')}"></div>
-
+	<p>
+		<a class="btn btn-secondary btn-sm" th:href="@{/logout}">ログアウト</a>
+	</p>
+	
 	
     </div><!-- /.col- -->
   </div><!-- /.row -->
