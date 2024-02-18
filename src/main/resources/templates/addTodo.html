@@ -8,7 +8,7 @@
 <title>Todoリスト</title>
 </head>
 <body>
-<div class="container">
+<div class="container ">
 	<header>
 	
 	</header>
@@ -19,24 +19,24 @@
 	<div class="row">
     <div class="col-md-12">
 
-      <form class="form" action="" method="post" th:object="${todo}">
-        <div class="form-group">
+      <form class="form " action="" method="post" th:object="${todo}">
+        <div class="form-group ">
             <label >タイトル<br>
-            <input type="text" th:field="*{title}"></label>
+            <input class="table-bordered" type="text" th:field="*{title}"></label>
             <small class="error-message" th:errors="*{title}"></small>
         </div>
         <div class="form-group">
             <label >内容<br>
-            <textarea th:field="*{note}" rows="3" cols="30"></textarea></label>
+            <textarea class="table-bordered" th:field="*{note}" rows="3" cols="30"></textarea></label>
             <small class="error-message" th:errors="*{note}"></small>
         </div>
         <div class="form-group">
             <label>期日<br>
-            <input type="date" th:field="*{limit}"></label>
+            <input class="table-bordered" type="date" th:field="*{limit}"></label>
             <small></small>
         </div>
         <p class="mt-2">重要度<br>
-            <select th:field="*{important}">
+            <select class="table-bordered" th:field="*{important}">
             	<option th:each="i : ${#numbers.sequence(1,10)}" th:value="${i}" th:text="${i}"></option>
             </select>
         </p>
